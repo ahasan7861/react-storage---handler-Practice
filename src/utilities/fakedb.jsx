@@ -3,17 +3,37 @@
 
 const addToDb = (id) =>{
 
-    const quantity = localStorage.getItem(id);
+    let shoppingCart ;
 
-    if(quantity){
-        console.log('already exist')
+    // get the shoppingCart
 
-        const newQuantity = parseInt(quantity) + 1;
-        localStorage.setItem(id, newQuantity)
+    const storedCart = localStorage.getItem('shopping-cart');
+
+    if(storedCart){
+        shoppingCart = JSON.parse(storedCart);
     }
     else{
-        localStorage.setItem(id, 11)
+        shoppingCart = {};
     }
+
+    // add quantity
+
+    const quantity = shoppingCart[id];
+
+    if(quantity){
+        
+        const newQuantity = quantity + 1;
+
+        shoppingCart[id] = newQuantity;
+        
+    }
+    else{
+
+        shoppingCart[id] = 1;
+        
+    }
+
+    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 
 
 }
