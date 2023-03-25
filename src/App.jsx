@@ -8,8 +8,10 @@ import Shoes from './components/Shoes/Shoes'
 function App() {
   const [count, setCount] = useState(0)
 
+
   return (
     <div className="App">
+
      
       <Cosmetics></Cosmetics>
       <Shoes></Shoes>
